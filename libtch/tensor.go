@@ -152,6 +152,12 @@ func AtcCudaIsAvailable() bool {
 	return *(*bool)(unsafe.Pointer(&result))
 }
 
+// int atc_mps_is_available();
+func AtcMpsIsAvailable() bool {
+	result := C.atc_mps_is_available()
+	return *(*bool)(unsafe.Pointer(&result))
+}
+
 // int atc_cudnn_is_available();
 func AtcCudnnIsAvailable() bool {
 	result := C.atc_cudnn_is_available()

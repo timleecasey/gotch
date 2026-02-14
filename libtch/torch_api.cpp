@@ -49,7 +49,7 @@ c10::List<c10::optional<torch::Tensor>> of_carray_tensor_opt(torch::Tensor **vs,
 at::Device device_of_int(int d) {
   if (d == -3)
     return at::Device(at::kVulkan);
-  // if (d == -2) return at::Device(at::kMPS);
+  if (d == -2) return at::Device(at::kMPS);
   if (d < 0)
     return at::Device(at::kCPU);
   return at::Device(at::kCUDA, /*index=*/d);
@@ -754,6 +754,11 @@ int atc_cuda_device_count() {
 
 int atc_cuda_is_available() {
   PROTECT(return torch::cuda::is_available();)
+  return -1;
+}
+
+int atc_mps_is_available() {
+  PROTECT(return torch::mps::is_available();)
   return -1;
 }
 
