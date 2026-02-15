@@ -41,4 +41,7 @@ func TestInitTensor_Memcheck(t *testing.T) {
 
 	time.Sleep(time.Second * 10)
 	gotch.PrintMemStats("Final")
+
+	// Ensure gradients are enabled for subsequent tests
+	ts.MustGradSetEnabled(true)
 }
