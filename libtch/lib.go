@@ -1,9 +1,18 @@
 package libtch
 
-// #cgo CFLAGS: -I${SRCDIR} -O3 -Wall -Wno-unused-variable -Wno-deprecated-declarations -Wno-c++11-narrowing -g -Wno-sign-compare -Wno-unused-function
-// #cgo CFLAGS: -I/Users/tlc/src/gotch/libtorch-2.10.0-macos/include/torch/csrc/api/include
-// #cgo CFLAGS: -I/Users/tlc/src/gotch/libtorch-2.10.0-macos/include
-// #cgo LDFLAGS: -L/Users/tlc/src/gotch/libtorch-2.10.0-macos/lib -ltorch -ltorch_cpu -lc10
-// #cgo LDFLAGS: -Wl,-rpath,/Users/tlc/src/gotch/libtorch-2.10.0-macos/lib
-// #cgo CXXFLAGS: -std=c++17
+/*
+CGO configuration is now managed via Makefile and arch-specific files in arch/ directory.
+Build with 'make build' to ensure proper CGO flags are set.
+
+The Makefile exports:
+  CGO_CFLAGS   - C compilation flags including LibTorch include paths
+  CGO_LDFLAGS  - Linker flags including LibTorch library paths and rpath
+  CGO_CXXFLAGS - C++ compilation flags (e.g., -std=c++17)
+
+To override configuration:
+  LIBTORCH_PATH=/custom/path make build
+  make ARCH_CONFIG=linux-amd64-cuda build
+*/
+
+// #cgo CFLAGS: -I${SRCDIR}
 import "C"

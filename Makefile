@@ -1,13 +1,31 @@
 # Makefile for gotch - PyTorch 2.10.0 Go bindings
-# macOS with MPS support
+# Architecture-specific configuration is loaded from arch/ directory
 
-# Path to libtorch installation
-LIBTORCH_PATH := /Users/tlc/src/gotch/libtorch-2.10.0-macos
+SHELL := /bin/bash
 
-# Environment variables for building and testing
-export CPATH := $(LIBTORCH_PATH)/include/torch/csrc/api/include:$(LIBTORCH_PATH)/include
-export LIBRARY_PATH := $(LIBTORCH_PATH)/lib
-export DYLD_LIBRARY_PATH := $(LIBTORCH_PATH)/lib
+# Detect OS and architecture
+OS    := $(shell uname -s | tr '[:upper:]' '[:lower:]')
+ARCH  := $(shell uname -m)
+
+# Normalize architecture names
+ifeq ($(ARCH),x86_64)
+	ARCH := amd64
+else ifeq ($(ARCH),aarch64)
+	ARCH := arm64
+endif
+
+# Allow override of architecture configuration
+# Examples:
+#   make ARCH_CONFIG=linux-amd64-cuda build
+#   make ARCH_CONFIG=darwin-arm64 test
+ARCH_CONFIG ?= $(OS)-$(ARCH)
+
+# Include architecture-specific configuration
+ARCH_FILE := arch/$(ARCH_CONFIG).mk
+ifeq ($(wildcard $(ARCH_FILE)),)
+	$(error Architecture config file not found: $(ARCH_FILE). Available: $(wildcard arch/*.mk))
+endif
+include $(ARCH_FILE)
 
 # Go test flags
 TEST_FLAGS := -v
@@ -72,16 +90,20 @@ clean:
 # Display build environment
 env:
 	@echo "Build Environment:"
+	@echo "  Platform:           $(PLATFORM_DESC)"
+	@echo "  Arch Config:        $(ARCH_CONFIG) ($(ARCH_FILE))"
 	@echo "  LIBTORCH_PATH:      $(LIBTORCH_PATH)"
-	@echo "  CPATH:              $(CPATH)"
-	@echo "  LIBRARY_PATH:       $(LIBRARY_PATH)"
-	@echo "  DYLD_LIBRARY_PATH:  $(DYLD_LIBRARY_PATH)"
+	@echo "  $(RUNTIME_LIB_VAR): $($(RUNTIME_LIB_VAR))"
+	@echo ""
+	@echo "CGO Flags:"
+	@echo "  CGO_CFLAGS:         $(CGO_CFLAGS)"
+	@echo "  CGO_LDFLAGS:        $(CGO_LDFLAGS)"
+	@echo "  CGO_CXXFLAGS:       $(CGO_CXXFLAGS)"
 	@echo ""
 	@echo "Go version:"
 	@go version
 	@echo ""
 	@echo "LibTorch version: 2.10.0"
-	@echo "MPS support: Available on Apple Silicon"
 
 # Check if MPS is available
 check-mps:
@@ -96,6 +118,11 @@ ffi-validate:
 # Help target
 help:
 	@echo "Gotch Makefile - PyTorch 2.10.0 Go Bindings"
+	@echo ""
+	@echo "Current Configuration:"
+	@echo "  Platform:      $(PLATFORM_DESC)"
+	@echo "  Arch Config:   $(ARCH_CONFIG)"
+	@echo "  LibTorch:      $(LIBTORCH_PATH)"
 	@echo ""
 	@echo "Targets:"
 	@echo "  make build              - Build all core packages"
@@ -112,12 +139,13 @@ help:
 	@echo "  make ffi-validate       - Validate FFI type conversions (C <-> Go)"
 	@echo "  make help               - Show this help message"
 	@echo ""
-	@echo "Environment:"
-	@echo "  LibTorch: $(LIBTORCH_PATH)"
-	@echo "  PyTorch version: 2.10.0"
-	@echo "  Platform: macOS with MPS support"
+	@echo "Architecture Configuration:"
+	@echo "  Default: auto-detected (current: $(ARCH_CONFIG))"
+	@echo "  Override: make ARCH_CONFIG=linux-amd64-cuda build"
+	@echo "  Available configs: $(notdir $(basename $(wildcard arch/*.mk)))"
 	@echo ""
 	@echo "Examples:"
 	@echo "  make test-nn"
 	@echo "  make test-nn-specific TEST=TestInitTensor_Memcheck"
-	@echo "  make test"
+	@echo "  make ARCH_CONFIG=linux-amd64-cuda build"
+	@echo "  LIBTORCH_PATH=/custom/path make build"
