@@ -174,13 +174,13 @@ int at_autocast_increment_nesting() {
 }
 
 bool at_autocast_is_enabled() {
-  PROTECT(return at::autocast::is_enabled();)
+  PROTECT(return at::autocast::is_autocast_enabled(at::kCUDA);)
   return -1;
 }
 
 bool at_autocast_set_enabled(bool b) {
-  PROTECT(bool is_enabled = at::autocast::is_enabled();
-          at::autocast::set_enabled(b); return is_enabled;)
+  PROTECT(bool is_enabled = at::autocast::is_autocast_enabled(at::kCUDA);
+          at::autocast::set_autocast_enabled(at::kCUDA, b); return is_enabled;)
   return -1;
 }
 
@@ -251,7 +251,32 @@ void at_fill_double(tensor t, double v) { PROTECT(t->fill_(v);) }
 void at_fill_int64(tensor t, int64_t v) { PROTECT(t->fill_(v);) }
 
 void at_print(tensor t) {
-  PROTECT(torch::Tensor *tensor = (torch::Tensor *)t; cout << *tensor << endl;)
+  PROTECT(
+    torch::Tensor *tensor = (torch::Tensor *)t;
+    std::ostringstream oss;
+    oss << *tensor;
+    std::string output = oss.str();
+
+    // PyTorch 2.10.0 adds leading spaces to number lines - strip them for backward compatibility
+    std::istringstream iss(output);
+    std::string line;
+    std::vector<std::string> lines;
+    while (std::getline(iss, line)) {
+      // Remove leading space if line starts with space followed by a digit or minus sign
+      if (!line.empty() && line[0] == ' ' && line.length() > 1 &&
+          (std::isdigit(line[1]) || line[1] == '-')) {
+        lines.push_back(line.substr(1));
+      } else {
+        lines.push_back(line);
+      }
+    }
+
+    // Print all lines
+    for (size_t i = 0; i < lines.size(); ++i) {
+      printf("%s\n", lines[i].c_str());
+    }
+    fflush(stdout);
+  )
 }
 
 char *at_to_string(tensor t, int line_size) {
