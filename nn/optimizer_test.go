@@ -36,9 +36,6 @@ func TestOptimizer(t *testing.T) {
 		t.Errorf("Expect initial loss > %v, got %v", wantLoss, initialLoss)
 	}
 
-	// Ensure gradients are enabled before training
-	ts.MustGradSetEnabled(true)
-
 	// Optimization loop
 	for i := 0; i < 50; i++ {
 		logits := x.ApplyT(model, true)
