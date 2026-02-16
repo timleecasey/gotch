@@ -13,7 +13,7 @@ export DYLD_LIBRARY_PATH := $(LIBTORCH_PATH)/lib
 TEST_FLAGS := -v
 TEST_TIMEOUT := 5m
 
-.PHONY: all build test test-nn test-ts test-all clean help
+.PHONY: all build test test-nn test-ts clean help ffi-validate
 
 # Default target
 all: build
@@ -24,13 +24,14 @@ build:
 	@go build -v . ./ts ./nn ./vision
 
 # Run all tests
-test-all: test-nn test-ts
+test: test-nn test-ts ffi-validate
 	@echo "All tests completed"
 
 # Run nn package tests
+# Running with -p 1 to force sequential execution (PyTorch 2.10.0 thread-local gradient state)
 test-nn:
 	@echo "Running nn package tests..."
-	@go test $(TEST_FLAGS) -timeout $(TEST_TIMEOUT) ./nn
+	@go test $(TEST_FLAGS) -timeout $(TEST_TIMEOUT) -p 1 -parallel 1 ./nn
 
 # Run ts package tests
 test-ts:
@@ -87,13 +88,18 @@ check-mps:
 	@echo "Checking MPS availability..."
 	@go run -exec 'env DYLD_LIBRARY_PATH=$(DYLD_LIBRARY_PATH)' tools/check_device.go || echo "Create tools/check_device.go to test device availability"
 
+# Validate FFI type conversions
+ffi-validate:
+	@echo "Validating FFI type conversions..."
+	@go run tools/ffi-validation/main.go
+
 # Help target
 help:
 	@echo "Gotch Makefile - PyTorch 2.10.0 Go Bindings"
 	@echo ""
 	@echo "Targets:"
 	@echo "  make build              - Build all core packages"
-	@echo "  make test-all           - Run all tests (nn + ts)"
+	@echo "  make test               - Run all tests (nn + ts)"
 	@echo "  make test-nn            - Run nn package tests"
 	@echo "  make test-ts            - Run ts package tests"
 	@echo "  make test-nn-specific   - Run specific nn test (TEST=TestName)"
@@ -103,6 +109,7 @@ help:
 	@echo "  make clean              - Clean build artifacts and caches"
 	@echo "  make env                - Display build environment"
 	@echo "  make check-mps          - Check MPS device availability"
+	@echo "  make ffi-validate       - Validate FFI type conversions (C <-> Go)"
 	@echo "  make help               - Show this help message"
 	@echo ""
 	@echo "Environment:"
@@ -113,4 +120,4 @@ help:
 	@echo "Examples:"
 	@echo "  make test-nn"
 	@echo "  make test-nn-specific TEST=TestInitTensor_Memcheck"
-	@echo "  make test-all"
+	@echo "  make test"

@@ -200,8 +200,11 @@ int at_requires_grad(tensor t) {
 }
 
 int at_grad_set_enabled(int b) {
-  PROTECT(bool is_enabled = torch::autograd::GradMode::is_enabled();
-          torch::autograd::GradMode::set_enabled(b); return is_enabled;)
+  PROTECT(
+    bool is_enabled = torch::autograd::GradMode::is_enabled();
+    torch::autograd::GradMode::set_enabled(b != 0);  // Explicit bool conversion for PyTorch 2.10.0
+    return is_enabled ? 1 : 0;  // Explicit int conversion
+  )
   return -1;
 }
 
