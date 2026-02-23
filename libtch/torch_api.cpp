@@ -8,6 +8,7 @@
 #include <torch/csrc/jit/runtime/graph_executor.h>
 #include <torch/script.h>
 #include <torch/torch.h>
+#include <ATen/mps/MPSAllocatorInterface.h>
 #include <vector>
 
 #define STB_IMAGE_IMPLEMENTATION
@@ -186,6 +187,7 @@ bool at_autocast_set_enabled(bool b) {
 
 int at_device(tensor t) {
   PROTECT(auto device = t->device(); if (device.type() == at::kCPU) return -1;
+          if (device.type() == at::kMPS) return -2;
           if (device.type() == at::kCUDA) return device.index();)
   return -99; // error
 }
@@ -788,6 +790,28 @@ int atc_cuda_is_available() {
 int atc_mps_is_available() {
   PROTECT(return torch::mps::is_available();)
   return -1;
+}
+
+size_t atc_mps_current_allocated_memory() {
+  PROTECT(
+    auto* allocator = at::mps::getIMPSAllocator(false);
+    if (allocator) return allocator->getCurrentAllocatedMemory();
+  )
+  return 0;
+}
+
+void atc_mps_empty_cache() {
+  PROTECT(
+    auto* allocator = at::mps::getIMPSAllocator(false);
+    if (allocator) allocator->emptyCache();
+  )
+}
+
+void atc_mps_synchronize() {
+  PROTECT(
+    auto guard = c10::impl::VirtualGuardImpl(at::DeviceType::MPS);
+    guard.synchronizeDevice(0);
+  )
 }
 
 int atc_cudnn_is_available() {
