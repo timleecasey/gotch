@@ -159,6 +159,21 @@ func AtcMpsIsAvailable() bool {
 	return *(*bool)(unsafe.Pointer(&result))
 }
 
+// size_t atc_mps_current_allocated_memory();
+func AtcMpsCurrentAllocatedMemory() uint64 {
+	return uint64(C.atc_mps_current_allocated_memory())
+}
+
+// void atc_mps_empty_cache();
+func AtcMpsEmptyCache() {
+	C.atc_mps_empty_cache()
+}
+
+// void atc_mps_synchronize();
+func AtcMpsSynchronize() {
+	C.atc_mps_synchronize()
+}
+
 // int atc_cudnn_is_available();
 func AtcCudnnIsAvailable() bool {
 	result := C.atc_cudnn_is_available()

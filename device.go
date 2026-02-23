@@ -44,6 +44,21 @@ func (m Mps) IsAvailable() bool {
 	return lib.AtcMpsIsAvailable()
 }
 
+// CurrentAllocatedMemory returns the number of bytes currently allocated on the MPS device.
+func (m Mps) CurrentAllocatedMemory() uint64 {
+	return lib.AtcMpsCurrentAllocatedMemory()
+}
+
+// EmptyCache releases all cached MPS memory back to the system.
+func (m Mps) EmptyCache() {
+	lib.AtcMpsEmptyCache()
+}
+
+// Synchronize waits for all MPS operations to complete.
+func (m Mps) Synchronize() {
+	lib.AtcMpsSynchronize()
+}
+
 // Cuda methods:
 // =============
 

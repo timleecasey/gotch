@@ -1,18 +1,12 @@
 package libtch
 
-/*
-CGO configuration is now managed via Makefile and arch-specific files in arch/ directory.
-Build with 'make build' to ensure proper CGO flags are set.
-
-The Makefile exports:
-  CGO_CFLAGS   - C compilation flags including LibTorch include paths
-  CGO_LDFLAGS  - Linker flags including LibTorch library paths and rpath
-  CGO_CXXFLAGS - C++ compilation flags (e.g., -std=c++17)
-
-To override configuration:
-  LIBTORCH_PATH=/custom/path make build
-  make ARCH_CONFIG=linux-amd64-cuda build
-*/
+// CGO flags are set via environment variables exported by the arch/*.mk
+// Makefile includes (e.g., arch/darwin-arm64.mk). Run builds through
+// `make` or export CGO_CFLAGS/CGO_LDFLAGS/CGO_CXXFLAGS manually.
+//
+// The only hardcoded flag is -I${SRCDIR} so CGO can find the local
+// torch_api.h header next to the .cpp source.
 
 // #cgo CFLAGS: -I${SRCDIR}
+// #cgo CXXFLAGS: -I${SRCDIR}
 import "C"
