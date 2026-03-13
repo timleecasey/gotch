@@ -1360,7 +1360,7 @@ func (ts *Tensor) Float64Values(delOpt ...bool) []float64 {
 	float64Ts := ts.MustTotype(gotch.Double, false)
 
 	float64Ts.MustCopyData(vec, numel)
-	// float64Ts.MustDrop()
+	float64Ts.MustDrop()
 
 	if del {
 		ts.MustDrop()
