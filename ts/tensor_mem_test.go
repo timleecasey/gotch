@@ -55,6 +55,36 @@ func TestMem(t *testing.T) {
 	fmt.Printf(CheckCMemLeak())
 }
 
+// TestFreeCTensor_DebugModeNoNilDeref exercises the gotch.Debug branch in
+// freeCTensor that previously panicked on every successful release:
+//
+//	if gotch.Debug {
+//	    shape, err := ts.Size()
+//	    if err != nil { err = fmt.Errorf(...) }  // err is still nil on success
+//	    log.Printf(err.Error())                  // <- nil-deref panic
+//	    ...
+//	}
+//
+// The guard is now "if err != nil { log }; else { account bytes }". This
+// test drops a healthy tensor with Debug=true; if the nil-deref returns
+// we crash with SIGSEGV / panic and the test fails.
+func TestFreeCTensor_DebugModeNoNilDeref(t *testing.T) {
+	prev := gotch.Debug
+	gotch.Debug = true
+	defer func() { gotch.Debug = prev }()
+
+	x, err := Randn([]int64{2, 3}, gotch.Float, gotch.CPU)
+	if err != nil {
+		t.Fatalf("Randn: %v", err)
+	}
+	// Drop synchronously — do NOT rely on the finalizer. The bug fires
+	// in freeCTensor regardless of how it's invoked; a direct Drop keeps
+	// the test deterministic.
+	if err := x.Drop(); err != nil {
+		t.Fatalf("Drop: %v", err)
+	}
+}
+
 func TestMem1(t *testing.T) {
 	var rtm runtime.MemStats
 	runtime.ReadMemStats(&rtm)

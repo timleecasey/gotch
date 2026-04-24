@@ -152,16 +152,18 @@ func freeCTensor(ts *Tensor) error {
 	if gotch.Debug {
 		shape, err := ts.Size()
 		if err != nil {
-			err = fmt.Errorf("ERROR: failed to release tensor %q: %w\n", ts.name, err)
+			// Log the size-retrieval failure but continue with the release —
+			// the C tensor still needs to be freed. Skip byte accounting
+			// since shape is unreliable when Size() fails.
+			log.Printf("WARNING: failed to read size for tensor %q during release: %v", ts.name, err)
+		} else {
+			numel := uint(FlattenDim(shape))
+			dtype := ts.DType()
+			nbytes := int64(numel * dtype.Size())
+			atomic.AddInt64(&AllocatedMem, -nbytes)
+
+			log.Printf("INFO: Released tensor %q - C memory(%d bytes).\n", ts.name, nbytes)
 		}
-		log.Printf(err.Error())
-
-		numel := uint(FlattenDim(shape))
-		dtype := ts.DType()
-		nbytes := int64(numel * dtype.Size())
-		atomic.AddInt64(&AllocatedMem, -nbytes)
-
-		log.Printf("INFO: Released tensor %q - C memory(%d bytes).\n", ts.name, nbytes)
 	}
 
 	lib.AtFree(ts.ctensor)
