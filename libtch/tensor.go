@@ -431,6 +431,14 @@ func AtGradSetEnabled(b int) int {
 	return int(cretVal)
 }
 
+// void at_manual_seed(int64_t seed);
+// Sets the global random seed for libtorch's RNG. Used by tests to make
+// model initialization deterministic regardless of test ordering.
+func AtManualSeed(seed int64) {
+	cseed := C.int64_t(seed)
+	C.at_manual_seed(cseed)
+}
+
 /*
  * optimizer ato_adam(double learning_rate,
  *                    double beta1,
