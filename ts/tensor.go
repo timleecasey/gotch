@@ -1262,6 +1262,14 @@ func MustGradSetEnabled(b bool) bool {
 	return state
 }
 
+// ManualSeed sets the global random seed used by libtorch's RNG. Call this
+// before any tensor initialization (nn.NewVarStore, nn.LinearConfig, etc.) to
+// make weight initialization deterministic regardless of test ordering or
+// any prior code that consumed random state.
+func ManualSeed(seed int64) {
+	lib.AtManualSeed(seed)
+}
+
 // NoGrad runs a closure without keeping track of gradients.
 // PyTorch 2.10.0: Save and restore previous gradient state (RAII pattern)
 func NoGrad(fn func()) {
