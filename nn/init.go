@@ -222,32 +222,25 @@ func (k *kaimingUniformInit) InitTensor(dims []int64, device gotch.Device, dtype
 		dtype = dtypeOpt[0]
 	}
 
-	/*
-		fanIn, _, err := CalculateFans(dims)
-		if err != nil {
-			panic(err)
-		}
+	// Kaiming UNIFORM init, matching PyTorch's default for nn.Linear:
+	//     bound = sqrt(3) * gain / sqrt(fan_in)
+	//     W ~ U[-bound, +bound]
+	//     Var(W) = gain² / fan_in
+	fanIn, _, err := CalculateFans(dims)
+	if err != nil {
+		panic(fmt.Errorf("kaimingUniformInit.InitTensor: CalculateFans: %w", err))
+	}
+	gain, err := calculateGain(k.NonLinearity, k.NegativeSlope)
+	if err != nil {
+		panic(fmt.Errorf("kaimingUniformInit.InitTensor: calculateGain: %w", err))
+	}
+	std := gain / math.Sqrt(float64(fanIn))
+	bound := math.Sqrt(3.0) * std
 
-		gain, err := calculateGain(k.NonLinearity, k.NegativeSlope) // default non-linearity="leaky_relu", negative_slope=0.01
-		if err != nil {
-			err = fmt.Errorf("kaimingUniformInit.InitTensor() failed: %v\n", err)
-			panic(err)
-		}
-
-		std := gain / math.Sqrt(float64(fanIn)) // default using fanIn
-
-		// Calculate uniform bounds from standard deviation
-		bound := math.Sqrt(3.0) * std
-
-		// NOTE. This is a well-known memory leak!!!
-		// Avoid to use it for now!!!
-		retVal = ts.MustZeros(dims, dtype, device)
-		retVal.Uniform_(-bound, bound)
-	*/
-
-	// NOTE. For now, just make a random norm
-	retVal = ts.MustRandn(dims, dtype, device)
-
+	retVal = ts.MustZeros(dims, dtype, device)
+	if err := retVal.Uniform_(-bound, bound); err != nil {
+		panic(fmt.Errorf("kaimingUniformInit.InitTensor: Uniform_: %w", err))
+	}
 	return retVal
 }
 

@@ -25,7 +25,7 @@ func(ts *Tensor) __And_(other *Scalar)(err error) {
     err = fmt.Errorf("__And_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -41,7 +41,7 @@ func(ts *Tensor) __AndTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("__AndTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -57,7 +57,7 @@ func(ts *Tensor) __Iand_(other *Scalar)(err error) {
     err = fmt.Errorf("__Iand_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -73,7 +73,7 @@ func(ts *Tensor) __IandTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("__IandTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -89,7 +89,7 @@ func(ts *Tensor) __Ilshift_(other *Scalar)(err error) {
     err = fmt.Errorf("__Ilshift_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -105,7 +105,7 @@ func(ts *Tensor) __IlshiftTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("__IlshiftTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -121,7 +121,7 @@ func(ts *Tensor) __Ior_(other *Scalar)(err error) {
     err = fmt.Errorf("__Ior_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -137,7 +137,7 @@ func(ts *Tensor) __IorTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("__IorTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -153,7 +153,7 @@ func(ts *Tensor) __Irshift_(other *Scalar)(err error) {
     err = fmt.Errorf("__Irshift_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -169,7 +169,7 @@ func(ts *Tensor) __IrshiftTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("__IrshiftTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -185,7 +185,7 @@ func(ts *Tensor) __Ixor_(other *Scalar)(err error) {
     err = fmt.Errorf("__Ixor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -201,7 +201,7 @@ func(ts *Tensor) __IxorTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("__IxorTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -217,7 +217,7 @@ func(ts *Tensor) __Lshift_(other *Scalar)(err error) {
     err = fmt.Errorf("__Lshift_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -250,7 +250,7 @@ func(ts *Tensor) __LshiftTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("__LshiftTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -283,7 +283,7 @@ func(ts *Tensor) __Or_(other *Scalar)(err error) {
     err = fmt.Errorf("__Or_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -299,7 +299,7 @@ func(ts *Tensor) __OrTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("__OrTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -315,7 +315,7 @@ func(ts *Tensor) __Rshift_(other *Scalar)(err error) {
     err = fmt.Errorf("__Rshift_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -348,7 +348,7 @@ func(ts *Tensor) __RshiftTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("__RshiftTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -381,7 +381,7 @@ func(ts *Tensor) __Xor_(other *Scalar)(err error) {
     err = fmt.Errorf("__Xor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -397,7 +397,7 @@ func(ts *Tensor) __XorTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("__XorTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -587,7 +587,7 @@ func(ts *Tensor) _AddRelu_(other *Tensor)(err error) {
     err = fmt.Errorf("_AddRelu_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -637,7 +637,7 @@ func(ts *Tensor) _AddReluScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("_AddReluScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -802,7 +802,7 @@ func(ts *Tensor) _AmpUpdateScale_(growthTracker *Tensor, foundInf *Tensor, scale
     err = fmt.Errorf("_AmpUpdateScale_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -1299,7 +1299,7 @@ func(ts *Tensor) _Coalesced_(coalesced bool)(err error) {
     err = fmt.Errorf("_Coalesced_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -2977,7 +2977,7 @@ func(ts *Tensor) _FillMemEffDropoutMask_(dropoutP float64, seed int64, offset in
     err = fmt.Errorf("_FillMemEffDropoutMask_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -4471,7 +4471,7 @@ func(ts *Tensor) _MkldnnTranspose_(dim0 int64, dim1 int64)(err error) {
     err = fmt.Errorf("_MkldnnTranspose_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -5676,7 +5676,7 @@ func(ts *Tensor) _ResizeOutput_(size []int64, device gotch.Device)(err error) {
     err = fmt.Errorf("_ResizeOutput_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -6145,7 +6145,7 @@ func(ts *Tensor) _ScatterReduce_(dim int64, index *Tensor, src *Tensor, reduce s
     err = fmt.Errorf("_ScatterReduce_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -6269,7 +6269,7 @@ func(ts *Tensor) _SobolEngineFf_(n int64, sobolstate *Tensor, dimension int64, n
     err = fmt.Errorf("_SobolEngineFf_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -6285,7 +6285,7 @@ func(ts *Tensor) _SobolEngineInitializeState_(dimension int64)(err error) {
     err = fmt.Errorf("_SobolEngineInitializeState_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -6301,7 +6301,7 @@ func(ts *Tensor) _SobolEngineScramble_(ltm *Tensor, dimension int64)(err error) 
     err = fmt.Errorf("_SobolEngineScramble_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -9530,7 +9530,7 @@ func(ts *Tensor) Abs_()(err error) {
     err = fmt.Errorf("Abs_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -9580,7 +9580,7 @@ func(ts *Tensor) Absolute_()(err error) {
     err = fmt.Errorf("Absolute_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -9630,7 +9630,7 @@ func(ts *Tensor) Acos_()(err error) {
     err = fmt.Errorf("Acos_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -9680,7 +9680,7 @@ func(ts *Tensor) Acosh_()(err error) {
     err = fmt.Errorf("Acosh_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -10018,7 +10018,7 @@ func(ts *Tensor) Add_(other *Tensor)(err error) {
     err = fmt.Errorf("Add_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -10068,7 +10068,7 @@ func(ts *Tensor) AddScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("AddScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -10118,7 +10118,7 @@ func(ts *Tensor) Addbmm_(batch1 *Tensor, batch2 *Tensor)(err error) {
     err = fmt.Errorf("Addbmm_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -10168,7 +10168,7 @@ func(ts *Tensor) Addcdiv_(tensor1 *Tensor, tensor2 *Tensor)(err error) {
     err = fmt.Errorf("Addcdiv_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -10218,7 +10218,7 @@ func(ts *Tensor) Addcmul_(tensor1 *Tensor, tensor2 *Tensor)(err error) {
     err = fmt.Errorf("Addcmul_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -10268,7 +10268,7 @@ func(ts *Tensor) Addmm_(mat1 *Tensor, mat2 *Tensor)(err error) {
     err = fmt.Errorf("Addmm_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -10352,7 +10352,7 @@ func(ts *Tensor) Addmv_(mat *Tensor, vec *Tensor)(err error) {
     err = fmt.Errorf("Addmv_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -10402,7 +10402,7 @@ func(ts *Tensor) Addr_(vec1 *Tensor, vec2 *Tensor)(err error) {
     err = fmt.Errorf("Addr_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -10724,7 +10724,7 @@ func(ts *Tensor) AlphaDropout_(p float64, train bool)(err error) {
     err = fmt.Errorf("AlphaDropout_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11083,7 +11083,7 @@ func(ts *Tensor) Arccos_()(err error) {
     err = fmt.Errorf("Arccos_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11133,7 +11133,7 @@ func(ts *Tensor) Arccosh_()(err error) {
     err = fmt.Errorf("Arccosh_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11183,7 +11183,7 @@ func(ts *Tensor) Arcsin_()(err error) {
     err = fmt.Errorf("Arcsin_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11233,7 +11233,7 @@ func(ts *Tensor) Arcsinh_()(err error) {
     err = fmt.Errorf("Arcsinh_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11300,7 +11300,7 @@ func(ts *Tensor) Arctan2_(other *Tensor)(err error) {
     err = fmt.Errorf("Arctan2_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11333,7 +11333,7 @@ func(ts *Tensor) Arctan_()(err error) {
     err = fmt.Errorf("Arctan_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11383,7 +11383,7 @@ func(ts *Tensor) Arctanh_()(err error) {
     err = fmt.Errorf("Arctanh_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11627,7 +11627,7 @@ var cstorageOffsetVal int64 = 0
     err = fmt.Errorf("AsStrided_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11760,7 +11760,7 @@ func(ts *Tensor) Asin_()(err error) {
     err = fmt.Errorf("Asin_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11810,7 +11810,7 @@ func(ts *Tensor) Asinh_()(err error) {
     err = fmt.Errorf("Asinh_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11877,7 +11877,7 @@ func(ts *Tensor) Atan2_(other *Tensor)(err error) {
     err = fmt.Errorf("Atan2_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11910,7 +11910,7 @@ func(ts *Tensor) Atan_()(err error) {
     err = fmt.Errorf("Atan_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -11960,7 +11960,7 @@ func(ts *Tensor) Atanh_()(err error) {
     err = fmt.Errorf("Atanh_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -12349,7 +12349,7 @@ func(ts *Tensor) Baddbmm_(batch1 *Tensor, batch2 *Tensor)(err error) {
     err = fmt.Errorf("Baddbmm_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -12775,7 +12775,7 @@ func(ts *Tensor) Bernoulli_(p *Tensor)(err error) {
     err = fmt.Errorf("Bernoulli_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -12791,7 +12791,7 @@ func(ts *Tensor) BernoulliFloat_(p float64)(err error) {
     err = fmt.Errorf("BernoulliFloat_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13042,7 +13042,7 @@ func(ts *Tensor) BitwiseAnd_(other *Scalar)(err error) {
     err = fmt.Errorf("BitwiseAnd_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13124,7 +13124,7 @@ func(ts *Tensor) BitwiseAndTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("BitwiseAndTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13174,7 +13174,7 @@ func(ts *Tensor) BitwiseLeftShift_(other *Tensor)(err error) {
     err = fmt.Errorf("BitwiseLeftShift_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13256,7 +13256,7 @@ func(ts *Tensor) BitwiseLeftShiftTensorScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("BitwiseLeftShiftTensorScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13306,7 +13306,7 @@ func(ts *Tensor) BitwiseNot_()(err error) {
     err = fmt.Errorf("BitwiseNot_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13356,7 +13356,7 @@ func(ts *Tensor) BitwiseOr_(other *Scalar)(err error) {
     err = fmt.Errorf("BitwiseOr_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13438,7 +13438,7 @@ func(ts *Tensor) BitwiseOrTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("BitwiseOrTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13488,7 +13488,7 @@ func(ts *Tensor) BitwiseRightShift_(other *Tensor)(err error) {
     err = fmt.Errorf("BitwiseRightShift_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13570,7 +13570,7 @@ func(ts *Tensor) BitwiseRightShiftTensorScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("BitwiseRightShiftTensorScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13620,7 +13620,7 @@ func(ts *Tensor) BitwiseXor_(other *Scalar)(err error) {
     err = fmt.Errorf("BitwiseXor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -13702,7 +13702,7 @@ func(ts *Tensor) BitwiseXorTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("BitwiseXorTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14090,7 +14090,7 @@ func(ts *Tensor) Cauchy_(median float64, sigma float64)(err error) {
     err = fmt.Errorf("Cauchy_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14213,7 +14213,7 @@ func(ts *Tensor) Ceil_()(err error) {
     err = fmt.Errorf("Ceil_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14263,7 +14263,7 @@ func(ts *Tensor) Celu_()(err error) {
     err = fmt.Errorf("Celu_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14531,7 +14531,7 @@ func(ts *Tensor) Clamp_(min *Scalar, max *Scalar)(err error) {
     err = fmt.Errorf("Clamp_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14564,7 +14564,7 @@ func(ts *Tensor) ClampMax_(max *Scalar)(err error) {
     err = fmt.Errorf("ClampMax_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14614,7 +14614,7 @@ func(ts *Tensor) ClampMaxTensor_(max *Tensor)(err error) {
     err = fmt.Errorf("ClampMaxTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14664,7 +14664,7 @@ func(ts *Tensor) ClampMin_(min *Scalar)(err error) {
     err = fmt.Errorf("ClampMin_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14714,7 +14714,7 @@ func(ts *Tensor) ClampMinTensor_(min *Tensor)(err error) {
     err = fmt.Errorf("ClampMinTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14781,7 +14781,7 @@ func(ts *Tensor) ClampTensor_(min *Tensor, max *Tensor)(err error) {
     err = fmt.Errorf("ClampTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14831,7 +14831,7 @@ func(ts *Tensor) Clip_(min *Scalar, max *Scalar)(err error) {
     err = fmt.Errorf("Clip_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -14881,7 +14881,7 @@ func(ts *Tensor) ClipTensor_(min *Tensor, max *Tensor)(err error) {
     err = fmt.Errorf("ClipTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -15236,7 +15236,7 @@ func(ts *Tensor) ConjPhysical_()(err error) {
     err = fmt.Errorf("ConjPhysical_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -15736,7 +15736,7 @@ func(ts *Tensor) CopySparseToSparse_(src *Tensor, nonBlocking bool)(err error) {
     err = fmt.Errorf("CopySparseToSparse_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -15788,7 +15788,7 @@ func(ts *Tensor) Copysign_(other *Tensor)(err error) {
     err = fmt.Errorf("Copysign_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -15838,7 +15838,7 @@ func(ts *Tensor) CopysignScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("CopysignScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -15905,7 +15905,7 @@ func(ts *Tensor) Cos_()(err error) {
     err = fmt.Errorf("Cos_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -15955,7 +15955,7 @@ func(ts *Tensor) Cosh_()(err error) {
     err = fmt.Errorf("Cosh_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -16793,7 +16793,7 @@ func(ts *Tensor) Cumprod_(dim int64, dtype gotch.DType)(err error) {
     err = fmt.Errorf("Cumprod_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -16859,7 +16859,7 @@ func(ts *Tensor) Cumsum_(dim int64, dtype gotch.DType)(err error) {
     err = fmt.Errorf("Cumsum_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -16958,7 +16958,7 @@ func(ts *Tensor) Deg2rad_()(err error) {
     err = fmt.Errorf("Deg2rad_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17055,7 +17055,7 @@ func(ts *Tensor) Detach_()(err error) {
     err = fmt.Errorf("Detach_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17360,7 +17360,7 @@ func(ts *Tensor) Digamma_()(err error) {
     err = fmt.Errorf("Digamma_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17444,7 +17444,7 @@ func(ts *Tensor) Div_(other *Tensor)(err error) {
     err = fmt.Errorf("Div_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17511,7 +17511,7 @@ func(ts *Tensor) DivScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("DivScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17544,7 +17544,7 @@ func(ts *Tensor) DivScalarMode_(other *Scalar, roundingMode string)(err error) {
     err = fmt.Errorf("DivScalarMode_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17611,7 +17611,7 @@ func(ts *Tensor) DivTensorMode_(other *Tensor, roundingMode string)(err error) {
     err = fmt.Errorf("DivTensorMode_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17644,7 +17644,7 @@ func(ts *Tensor) Divide_(other *Tensor)(err error) {
     err = fmt.Errorf("Divide_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17711,7 +17711,7 @@ func(ts *Tensor) DivideScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("DivideScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17744,7 +17744,7 @@ func(ts *Tensor) DivideScalarMode_(other *Scalar, roundingMode string)(err error
     err = fmt.Errorf("DivideScalarMode_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17777,7 +17777,7 @@ func(ts *Tensor) DivideTensorMode_(other *Tensor, roundingMode string)(err error
     err = fmt.Errorf("DivideTensorMode_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17847,7 +17847,7 @@ func(ts *Tensor) Dropout_(p float64, train bool)(err error) {
     err = fmt.Errorf("Dropout_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -17935,7 +17935,7 @@ func(ts *Tensor) Elu_()(err error) {
     err = fmt.Errorf("Elu_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -18177,7 +18177,7 @@ func(ts *Tensor) EmbeddingRenorm_(indices *Tensor, maxNorm float64, normType flo
     err = fmt.Errorf("EmbeddingRenorm_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -18419,7 +18419,7 @@ func(ts *Tensor) Eq_(other *Scalar)(err error) {
     err = fmt.Errorf("Eq_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -18469,7 +18469,7 @@ func(ts *Tensor) EqTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("EqTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -18532,7 +18532,7 @@ func(ts *Tensor) Erf_()(err error) {
     err = fmt.Errorf("Erf_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -18582,7 +18582,7 @@ func(ts *Tensor) Erfc_()(err error) {
     err = fmt.Errorf("Erfc_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -18632,7 +18632,7 @@ func(ts *Tensor) Erfinv_()(err error) {
     err = fmt.Errorf("Erfinv_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -18699,7 +18699,7 @@ func(ts *Tensor) Exp2_()(err error) {
     err = fmt.Errorf("Exp2_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -18732,7 +18732,7 @@ func(ts *Tensor) Exp_()(err error) {
     err = fmt.Errorf("Exp_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -18859,7 +18859,7 @@ func(ts *Tensor) Expm1_()(err error) {
     err = fmt.Errorf("Expm1_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -18909,7 +18909,7 @@ func(ts *Tensor) Exponential_(lambd float64)(err error) {
     err = fmt.Errorf("Exponential_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -19325,7 +19325,7 @@ func(ts *Tensor) FeatureAlphaDropout_(p float64, train bool)(err error) {
     err = fmt.Errorf("FeatureAlphaDropout_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -19361,7 +19361,7 @@ func(ts *Tensor) FeatureDropout_(p float64, train bool)(err error) {
     err = fmt.Errorf("FeatureDropout_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20226,7 +20226,7 @@ func(ts *Tensor) Fill_(value *Scalar)(err error) {
     err = fmt.Errorf("Fill_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20244,7 +20244,7 @@ func(ts *Tensor) FillDiagonal_(fillValue *Scalar, wrap bool)(err error) {
     err = fmt.Errorf("FillDiagonal_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20294,7 +20294,7 @@ func(ts *Tensor) FillTensor_(value *Tensor)(err error) {
     err = fmt.Errorf("FillTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20344,7 +20344,7 @@ func(ts *Tensor) Fix_()(err error) {
     err = fmt.Errorf("Fix_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20499,7 +20499,7 @@ func(ts *Tensor) FloatPower_(exponent *Scalar)(err error) {
     err = fmt.Errorf("FloatPower_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20547,7 +20547,7 @@ func(ts *Tensor) FloatPowerTensor_(exponent *Tensor)(err error) {
     err = fmt.Errorf("FloatPowerTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20631,7 +20631,7 @@ func(ts *Tensor) Floor_()(err error) {
     err = fmt.Errorf("Floor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20664,7 +20664,7 @@ func(ts *Tensor) FloorDivide_(other *Tensor)(err error) {
     err = fmt.Errorf("FloorDivide_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20714,7 +20714,7 @@ func(ts *Tensor) FloorDivideScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("FloorDivideScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20849,7 +20849,7 @@ func(ts *Tensor) Fmod_(other *Scalar)(err error) {
     err = fmt.Errorf("Fmod_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20899,7 +20899,7 @@ func(ts *Tensor) FmodTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("FmodTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -20949,7 +20949,7 @@ func(ts *Tensor) Frac_()(err error) {
     err = fmt.Errorf("Frac_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -21425,7 +21425,7 @@ func(ts *Tensor) Gcd_(other *Tensor)(err error) {
     err = fmt.Errorf("Gcd_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -21475,7 +21475,7 @@ func(ts *Tensor) Ge_(other *Scalar)(err error) {
     err = fmt.Errorf("Ge_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -21525,7 +21525,7 @@ func(ts *Tensor) GeTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("GeTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -21575,7 +21575,7 @@ func(ts *Tensor) Gelu_(approximate string)(err error) {
     err = fmt.Errorf("Gelu_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -21659,7 +21659,7 @@ func(ts *Tensor) Geometric_(p float64)(err error) {
     err = fmt.Errorf("Geometric_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -21928,7 +21928,7 @@ func(ts *Tensor) Greater_(other *Scalar)(err error) {
     err = fmt.Errorf("Greater_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -21961,7 +21961,7 @@ func(ts *Tensor) GreaterEqual_(other *Scalar)(err error) {
     err = fmt.Errorf("GreaterEqual_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -22011,7 +22011,7 @@ func(ts *Tensor) GreaterEqualTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("GreaterEqualTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -22078,7 +22078,7 @@ func(ts *Tensor) GreaterTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("GreaterTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -22304,7 +22304,7 @@ func(ts *Tensor) Gt_(other *Scalar)(err error) {
     err = fmt.Errorf("Gt_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -22354,7 +22354,7 @@ func(ts *Tensor) GtTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("GtTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -22680,7 +22680,7 @@ func(ts *Tensor) Hardsigmoid_()(err error) {
     err = fmt.Errorf("Hardsigmoid_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -22764,7 +22764,7 @@ func(ts *Tensor) Hardswish_()(err error) {
     err = fmt.Errorf("Hardswish_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -22848,7 +22848,7 @@ func(ts *Tensor) Hardtanh_()(err error) {
     err = fmt.Errorf("Hardtanh_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -22972,7 +22972,7 @@ func(ts *Tensor) Heaviside_(values *Tensor)(err error) {
     err = fmt.Errorf("Heaviside_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -23209,7 +23209,7 @@ func(ts *Tensor) Hypot_(other *Tensor)(err error) {
     err = fmt.Errorf("Hypot_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -23259,7 +23259,7 @@ func(ts *Tensor) I0_()(err error) {
     err = fmt.Errorf("I0_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -23309,7 +23309,7 @@ func(ts *Tensor) Igamma_(other *Tensor)(err error) {
     err = fmt.Errorf("Igamma_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -23359,7 +23359,7 @@ func(ts *Tensor) Igammac_(other *Tensor)(err error) {
     err = fmt.Errorf("Igammac_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -23468,7 +23468,7 @@ func(ts *Tensor) IndexAdd_(dim int64, index *Tensor, source *Tensor)(err error) 
     err = fmt.Errorf("IndexAdd_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -23518,7 +23518,7 @@ func(ts *Tensor) IndexCopy_(dim int64, index *Tensor, source *Tensor)(err error)
     err = fmt.Errorf("IndexCopy_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -23568,7 +23568,7 @@ func(ts *Tensor) IndexFill_(dim int64, index *Tensor, value *Scalar)(err error) 
     err = fmt.Errorf("IndexFill_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -23618,7 +23618,7 @@ func(ts *Tensor) IndexFillIntTensor_(dim int64, index *Tensor, value *Tensor)(er
     err = fmt.Errorf("IndexFillIntTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -23672,7 +23672,7 @@ func(ts *Tensor) IndexReduce_(dim int64, index *Tensor, source *Tensor, reduce s
     err = fmt.Errorf("IndexReduce_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -24731,7 +24731,7 @@ func(ts *Tensor) Lcm_(other *Tensor)(err error) {
     err = fmt.Errorf("Lcm_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -24781,7 +24781,7 @@ func(ts *Tensor) Ldexp_(other *Tensor)(err error) {
     err = fmt.Errorf("Ldexp_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -24831,7 +24831,7 @@ func(ts *Tensor) Le_(other *Scalar)(err error) {
     err = fmt.Errorf("Le_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -24881,7 +24881,7 @@ func(ts *Tensor) LeTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("LeTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -24931,7 +24931,7 @@ func(ts *Tensor) LeakyRelu_()(err error) {
     err = fmt.Errorf("LeakyRelu_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -25019,7 +25019,7 @@ func(ts *Tensor) Lerp_(end *Tensor, weight *Scalar)(err error) {
     err = fmt.Errorf("Lerp_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -25069,7 +25069,7 @@ func(ts *Tensor) LerpTensor_(end *Tensor, weight *Tensor)(err error) {
     err = fmt.Errorf("LerpTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -25119,7 +25119,7 @@ func(ts *Tensor) Less_(other *Scalar)(err error) {
     err = fmt.Errorf("Less_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -25152,7 +25152,7 @@ func(ts *Tensor) LessEqual_(other *Scalar)(err error) {
     err = fmt.Errorf("LessEqual_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -25202,7 +25202,7 @@ func(ts *Tensor) LessEqualTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("LessEqualTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -25269,7 +25269,7 @@ func(ts *Tensor) LessTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("LessTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -25319,7 +25319,7 @@ func(ts *Tensor) Lgamma_()(err error) {
     err = fmt.Errorf("Lgamma_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -27407,7 +27407,7 @@ func(ts *Tensor) Log10_()(err error) {
     err = fmt.Errorf("Log10_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -27457,7 +27457,7 @@ func(ts *Tensor) Log1p_()(err error) {
     err = fmt.Errorf("Log1p_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -27507,7 +27507,7 @@ func(ts *Tensor) Log2_()(err error) {
     err = fmt.Errorf("Log2_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -27540,7 +27540,7 @@ func(ts *Tensor) Log_()(err error) {
     err = fmt.Errorf("Log_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -27573,7 +27573,7 @@ func(ts *Tensor) LogNormal_(mean float64, std float64)(err error) {
     err = fmt.Errorf("LogNormal_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -27861,7 +27861,7 @@ func(ts *Tensor) LogicalAnd_(other *Tensor)(err error) {
     err = fmt.Errorf("LogicalAnd_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -27911,7 +27911,7 @@ func(ts *Tensor) LogicalNot_()(err error) {
     err = fmt.Errorf("LogicalNot_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -27961,7 +27961,7 @@ func(ts *Tensor) LogicalOr_(other *Tensor)(err error) {
     err = fmt.Errorf("LogicalOr_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -28011,7 +28011,7 @@ func(ts *Tensor) LogicalXor_(other *Tensor)(err error) {
     err = fmt.Errorf("LogicalXor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -28073,7 +28073,7 @@ func(ts *Tensor) Logit_(eps []float64)(err error) {
     err = fmt.Errorf("Logit_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -28422,7 +28422,7 @@ func(ts *Tensor) Lt_(other *Scalar)(err error) {
     err = fmt.Errorf("Lt_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -28472,7 +28472,7 @@ func(ts *Tensor) LtTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("LtTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -28618,7 +28618,7 @@ func(ts *Tensor) MaskedFill_(mask *Tensor, value *Scalar)(err error) {
     err = fmt.Errorf("MaskedFill_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -28668,7 +28668,7 @@ func(ts *Tensor) MaskedFillTensor_(mask *Tensor, value *Tensor)(err error) {
     err = fmt.Errorf("MaskedFillTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -28718,7 +28718,7 @@ func(ts *Tensor) MaskedScatter_(mask *Tensor, source *Tensor)(err error) {
     err = fmt.Errorf("MaskedScatter_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -30136,7 +30136,7 @@ func(ts *Tensor) Mish_()(err error) {
     err = fmt.Errorf("Mish_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -31122,7 +31122,7 @@ func(ts *Tensor) Mul_(other *Tensor)(err error) {
     err = fmt.Errorf("Mul_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -31172,7 +31172,7 @@ func(ts *Tensor) MulScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("MulScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -31362,7 +31362,7 @@ func(ts *Tensor) Multiply_(other *Tensor)(err error) {
     err = fmt.Errorf("Multiply_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -31412,7 +31412,7 @@ func(ts *Tensor) MultiplyScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("MultiplyScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -31479,7 +31479,7 @@ func(ts *Tensor) Mvlgamma_(p int64)(err error) {
     err = fmt.Errorf("Mvlgamma_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -31565,7 +31565,7 @@ var cneginfVal float64 = 0.0
     err = fmt.Errorf("NanToNum_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -32236,7 +32236,7 @@ func(ts *Tensor) Ne_(other *Scalar)(err error) {
     err = fmt.Errorf("Ne_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -32286,7 +32286,7 @@ func(ts *Tensor) NeTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("NeTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -32336,7 +32336,7 @@ func(ts *Tensor) Neg_()(err error) {
     err = fmt.Errorf("Neg_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -32386,7 +32386,7 @@ func(ts *Tensor) Negative_()(err error) {
     err = fmt.Errorf("Negative_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -32636,7 +32636,7 @@ func(ts *Tensor) Nextafter_(other *Tensor)(err error) {
     err = fmt.Errorf("Nextafter_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -33054,7 +33054,7 @@ func(ts *Tensor) Normal_(mean float64, std float64)(err error) {
     err = fmt.Errorf("Normal_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -33104,7 +33104,7 @@ func(ts *Tensor) NotEqual_(other *Scalar)(err error) {
     err = fmt.Errorf("NotEqual_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -33154,7 +33154,7 @@ func(ts *Tensor) NotEqualTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("NotEqualTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -33828,7 +33828,7 @@ func(ts *Tensor) Polygamma_(n int64)(err error) {
     err = fmt.Errorf("Polygamma_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -33895,7 +33895,7 @@ func(ts *Tensor) Pow_(exponent *Scalar)(err error) {
     err = fmt.Errorf("Pow_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -33943,7 +33943,7 @@ func(ts *Tensor) PowTensor_(exponent *Tensor)(err error) {
     err = fmt.Errorf("PowTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -34120,7 +34120,7 @@ func(ts *Tensor) Put_(index *Tensor, source *Tensor, accumulate bool)(err error)
     err = fmt.Errorf("Put_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -34762,7 +34762,7 @@ func(ts *Tensor) Rad2deg_()(err error) {
     err = fmt.Errorf("Rad2deg_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -35118,7 +35118,7 @@ func(ts *Tensor) Random_()(err error) {
     err = fmt.Errorf("Random_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -35163,7 +35163,7 @@ func(ts *Tensor) RandomFrom_(from int64, to []int64)(err error) {
     err = fmt.Errorf("RandomFrom_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -35236,7 +35236,7 @@ func(ts *Tensor) RandomTo_(to int64)(err error) {
     err = fmt.Errorf("RandomTo_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -35416,7 +35416,7 @@ func(ts *Tensor) Reciprocal_()(err error) {
     err = fmt.Errorf("Reciprocal_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -35699,7 +35699,7 @@ func(ts *Tensor) Relu6_()(err error) {
     err = fmt.Errorf("Relu6_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -35715,7 +35715,7 @@ func(ts *Tensor) Relu_()(err error) {
     err = fmt.Errorf("Relu_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -35765,7 +35765,7 @@ func(ts *Tensor) Remainder_(other *Scalar)(err error) {
     err = fmt.Errorf("Remainder_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -35847,7 +35847,7 @@ func(ts *Tensor) RemainderTensor_(other *Tensor)(err error) {
     err = fmt.Errorf("RemainderTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -35897,7 +35897,7 @@ func(ts *Tensor) Renorm_(p *Scalar, dim int64, maxnorm *Scalar)(err error) {
     err = fmt.Errorf("Renorm_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -36286,7 +36286,7 @@ func(ts *Tensor) RequiresGrad_(requiresGrad bool)(err error) {
     err = fmt.Errorf("RequiresGrad_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -36356,7 +36356,7 @@ func(ts *Tensor) Resize_(size []int64)(err error) {
     err = fmt.Errorf("Resize_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -36389,7 +36389,7 @@ func(ts *Tensor) ResizeAs_(theTemplate *Tensor)(err error) {
     err = fmt.Errorf("ResizeAs_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -36439,7 +36439,7 @@ func(ts *Tensor) ResizeAsSparse_(theTemplate *Tensor)(err error) {
     err = fmt.Errorf("ResizeAsSparse_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -36787,7 +36787,7 @@ func(ts *Tensor) Round_()(err error) {
     err = fmt.Errorf("Round_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -36820,7 +36820,7 @@ func(ts *Tensor) RoundDecimals_(decimals int64)(err error) {
     err = fmt.Errorf("RoundDecimals_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -36978,7 +36978,7 @@ func(ts *Tensor) Rrelu_(training bool)(err error) {
     err = fmt.Errorf("Rrelu_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37015,7 +37015,7 @@ func(ts *Tensor) RreluWithNoise_(noise *Tensor, training bool)(err error) {
     err = fmt.Errorf("RreluWithNoise_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37129,7 +37129,7 @@ func(ts *Tensor) Rsqrt_()(err error) {
     err = fmt.Errorf("Rsqrt_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37305,7 +37305,7 @@ func(ts *Tensor) Scatter_(dim int64, index *Tensor, src *Tensor)(err error) {
     err = fmt.Errorf("Scatter_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37338,7 +37338,7 @@ func(ts *Tensor) ScatterAdd_(dim int64, index *Tensor, src *Tensor)(err error) {
     err = fmt.Errorf("ScatterAdd_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37388,7 +37388,7 @@ func(ts *Tensor) ScatterReduce_(dim int64, index *Tensor, src *Tensor, reduce st
     err = fmt.Errorf("ScatterReduce_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37455,7 +37455,7 @@ func(ts *Tensor) ScatterValue_(dim int64, index *Tensor, value *Scalar)(err erro
     err = fmt.Errorf("ScatterValue_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37505,7 +37505,7 @@ func(ts *Tensor) ScatterValueReduce_(dim int64, index *Tensor, value *Scalar, re
     err = fmt.Errorf("ScatterValueReduce_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37792,7 +37792,7 @@ func(ts *Tensor) Selu_()(err error) {
     err = fmt.Errorf("Selu_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37825,7 +37825,7 @@ func(ts *Tensor) Set_()(err error) {
     err = fmt.Errorf("Set_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37894,7 +37894,7 @@ func(ts *Tensor) SetSourceTensor_(source *Tensor)(err error) {
     err = fmt.Errorf("SetSourceTensor_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37929,7 +37929,7 @@ strideLen := len(stride)
     err = fmt.Errorf("SetSourceTensorStorageOffset_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -37962,7 +37962,7 @@ func(ts *Tensor) Sgn_()(err error) {
     err = fmt.Errorf("Sgn_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -38012,7 +38012,7 @@ func(ts *Tensor) Sigmoid_()(err error) {
     err = fmt.Errorf("Sigmoid_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -38094,7 +38094,7 @@ func(ts *Tensor) Sign_()(err error) {
     err = fmt.Errorf("Sign_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -38178,7 +38178,7 @@ func(ts *Tensor) Silu_()(err error) {
     err = fmt.Errorf("Silu_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -38262,7 +38262,7 @@ func(ts *Tensor) Sin_()(err error) {
     err = fmt.Errorf("Sin_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -38312,7 +38312,7 @@ func(ts *Tensor) Sinc_()(err error) {
     err = fmt.Errorf("Sinc_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -38362,7 +38362,7 @@ func(ts *Tensor) Sinh_()(err error) {
     err = fmt.Errorf("Sinh_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -39560,7 +39560,7 @@ func(ts *Tensor) SparseResize_(size []int64, sparseDim int64, denseDim int64)(er
     err = fmt.Errorf("SparseResize_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -39595,7 +39595,7 @@ func(ts *Tensor) SparseResizeAndClear_(size []int64, sparseDim int64, denseDim i
     err = fmt.Errorf("SparseResizeAndClear_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -42520,7 +42520,7 @@ func(ts *Tensor) Sqrt_()(err error) {
     err = fmt.Errorf("Sqrt_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -42570,7 +42570,7 @@ func(ts *Tensor) Square_()(err error) {
     err = fmt.Errorf("Square_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -42620,7 +42620,7 @@ func(ts *Tensor) Squeeze_()(err error) {
     err = fmt.Errorf("Squeeze_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -42757,7 +42757,7 @@ func(ts *Tensor) SqueezeDim_(dim int64)(err error) {
     err = fmt.Errorf("SqueezeDim_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -42792,7 +42792,7 @@ func(ts *Tensor) SqueezeDims_(dim []int64)(err error) {
     err = fmt.Errorf("SqueezeDims_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -43159,7 +43159,7 @@ func(ts *Tensor) Sub_(other *Tensor)(err error) {
     err = fmt.Errorf("Sub_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -43209,7 +43209,7 @@ func(ts *Tensor) SubScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("SubScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -43259,7 +43259,7 @@ func(ts *Tensor) Subtract_(other *Tensor)(err error) {
     err = fmt.Errorf("Subtract_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -43309,7 +43309,7 @@ func(ts *Tensor) SubtractScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("SubtractScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -43482,7 +43482,7 @@ func(ts *Tensor) Swapaxes_(axis0 int64, axis1 int64)(err error) {
     err = fmt.Errorf("Swapaxes_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -43515,7 +43515,7 @@ func(ts *Tensor) Swapdims_(dim0 int64, dim1 int64)(err error) {
     err = fmt.Errorf("Swapdims_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -43548,7 +43548,7 @@ func(ts *Tensor) T_()(err error) {
     err = fmt.Errorf("T_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -43695,7 +43695,7 @@ func(ts *Tensor) Tan_()(err error) {
     err = fmt.Errorf("Tan_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -43745,7 +43745,7 @@ func(ts *Tensor) Tanh_()(err error) {
     err = fmt.Errorf("Tanh_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -43865,7 +43865,7 @@ func(ts *Tensor) Threshold_(threshold *Scalar, value *Scalar)(err error) {
     err = fmt.Errorf("Threshold_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -44438,7 +44438,7 @@ func(ts *Tensor) Transpose_(dim0 int64, dim1 int64)(err error) {
     err = fmt.Errorf("Transpose_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -44617,7 +44617,7 @@ func(ts *Tensor) Tril_(diagonal int64)(err error) {
     err = fmt.Errorf("Tril_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -44717,7 +44717,7 @@ func(ts *Tensor) Triu_(diagonal int64)(err error) {
     err = fmt.Errorf("Triu_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -44799,7 +44799,7 @@ func(ts *Tensor) TrueDivide_(other *Tensor)(err error) {
     err = fmt.Errorf("TrueDivide_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -44849,7 +44849,7 @@ func(ts *Tensor) TrueDivideScalar_(other *Scalar)(err error) {
     err = fmt.Errorf("TrueDivideScalar_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -44882,7 +44882,7 @@ func(ts *Tensor) Trunc_()(err error) {
     err = fmt.Errorf("Trunc_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -45052,7 +45052,7 @@ func(ts *Tensor) Uniform_(from float64, to float64)(err error) {
     err = fmt.Errorf("Uniform_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -45262,7 +45262,7 @@ func(ts *Tensor) Unsqueeze_(dim int64)(err error) {
     err = fmt.Errorf("Unsqueeze_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -47032,7 +47032,7 @@ func(ts *Tensor) Xlogy_(other *Tensor)(err error) {
     err = fmt.Errorf("Xlogy_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -47115,7 +47115,7 @@ func(ts *Tensor) XlogyScalarOther_(other *Scalar)(err error) {
     err = fmt.Errorf("XlogyScalarOther_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
@@ -47164,7 +47164,7 @@ func(ts *Tensor) Zero_()(err error) {
     err = fmt.Errorf("Zero_() failed: %w", err)
     return err
   }
-  ts.ctensor = *ptr
+  lib.AtFree(*ptr)
   
   return err
 } 
