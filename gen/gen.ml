@@ -987,12 +987,21 @@ let write_wrapper funcs filename =
                 (* NOTE. if in_place method, no retVal return *)
                 if not (Func.is_inplace func) then
                   pm "  retVal = newTensor(*ptr, \"%s\")\n" gofunc_name
-                else pm "  ts.ctensor = *ptr\n" ;
+                else
+                  (* In-place ops: the C wrapper does
+                     `out__[0] = new torch::Tensor(self->op_(...))`,
+                     allocating a SECOND torch::Tensor that aliases the
+                     same storage as ts.ctensor. The in-place op already
+                     mutated ts.ctensor's storage; the duplicate handle
+                     must be freed or it leaks (one heap-allocated
+                     torch::Tensor + one storage refcount per call).
+                     See gotch issue: Uniform_/Normal_/Zero_/Fill_ etc. *)
+                  pm "  lib.AtFree(*ptr)\n" ;
                 pm "  \n" ;
                 pm "  return %s\n" (Func.go_return_notype func ~fallible:true) ;
                 pm "} \n"
 
-                
+
             | `fixed ntensors ->
                 pm "\n" ;
 
@@ -1032,7 +1041,16 @@ let write_wrapper funcs filename =
                   for i = 0 to ntensors - 1 do
                     pm "  retVal%d = newTensor(*ctensorPtr%d, \"%s_%d\")\n" i i gofunc_name i
                   done
-                else pm "  ts.ctensor = *ptr\n" ;
+                else
+                  (* In-place multi-tensor op: free every duplicate handle.
+                     Same rationale as the `fixed 1` in-place branch above.
+                     The previous emit referenced a nonexistent `*ptr`
+                     symbol and would have produced uncompilable Go;
+                     no in-place op currently exercises this branch in
+                     the v2.10 declarations, but keep it correct. *)
+                  for i = 0 to ntensors - 1 do
+                    pm "  lib.AtFree(*ctensorPtr%d)\n" i
+                  done ;
                 pm "  \n" ;
                 pm "  return %s\n" (Func.go_return_notype func ~fallible:true) ;
                 pm "} \n"
