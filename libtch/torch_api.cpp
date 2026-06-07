@@ -794,7 +794,7 @@ int atc_mps_is_available() {
 
 size_t atc_mps_current_allocated_memory() {
   PROTECT(
-    auto* allocator = at::mps::getIMPSAllocator(false);
+    auto* allocator = at::mps::getIMPSAllocator();
     if (allocator) return allocator->getCurrentAllocatedMemory();
   )
   return 0;
@@ -802,7 +802,7 @@ size_t atc_mps_current_allocated_memory() {
 
 void atc_mps_empty_cache() {
   PROTECT(
-    auto* allocator = at::mps::getIMPSAllocator(false);
+    auto* allocator = at::mps::getIMPSAllocator();
     if (allocator) allocator->emptyCache();
   )
 }
