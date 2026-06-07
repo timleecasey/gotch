@@ -1289,6 +1289,14 @@ func Must_FlashAttentionBackward(gradOut *Tensor, query *Tensor, key *Tensor, va
   return retVal0, retVal1, retVal2
 } 
 
+func Must_FlashAttentionForwardNoDropoutInplace(out *Tensor, query *Tensor, key *Tensor, value *Tensor, cumSeqQ *Tensor, cumSeqK *Tensor, maxQ int64, maxK int64, dropoutP float64, isCausal bool, returnDebugMask bool, scale []float64, windowSizeLeft []int64, windowSizeRight []int64, sequsedK *Tensor, alibiSlopes *Tensor, blockTable *Tensor, numSplits []int64)(retVal *Tensor) { 
+  
+  retVal, err := _FlashAttentionForwardNoDropoutInplace(out, query, key, value, cumSeqQ, cumSeqK, maxQ, maxK, dropoutP, isCausal, returnDebugMask, scale, windowSizeLeft, windowSizeRight, sequsedK, alibiSlopes, blockTable, numSplits)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
 func(ts *Tensor) Must_Foobar(arg1 bool, arg2 bool, arg3 bool, del bool)(retVal *Tensor) { 
   
   retVal, err := ts._Foobar(arg1, arg2, arg3, del)
@@ -2313,6 +2321,70 @@ func(ts *Tensor) Must_PdistBackwardOut(out *Tensor, grad *Tensor, p float64, pdi
   return retVal
 } 
 
+func Must_PhiloxKeyFoldIn(key *Tensor, data int64)(retVal *Tensor) { 
+  
+  retVal, err := _PhiloxKeyFoldIn(key, data)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func Must_PhiloxKeySplit(key *Tensor, numSplits int64)(retVal *Tensor) { 
+  
+  retVal, err := _PhiloxKeySplit(key, numSplits)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func(ts *Tensor) Must_PhiloxNormal(key *Tensor, mean float64, std float64, del bool)(retVal *Tensor) { 
+  
+  retVal, err := ts._PhiloxNormal(key, mean, std, del)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func(ts *Tensor) Must_PhiloxNormal_(key *Tensor, mean float64, std float64)() { 
+  
+  err := ts._PhiloxNormal_(key, mean, std)
+  if err != nil { log.Fatal(err) }
+  
+  return 
+} 
+
+func(ts *Tensor) Must_PhiloxNormalOut(out *Tensor, key *Tensor, mean float64, std float64, del bool)(retVal *Tensor) { 
+  
+  retVal, err := ts._PhiloxNormalOut(out, key, mean, std, del)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func(ts *Tensor) Must_PhiloxUniform(key *Tensor, low float64, high float64, del bool)(retVal *Tensor) { 
+  
+  retVal, err := ts._PhiloxUniform(key, low, high, del)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func(ts *Tensor) Must_PhiloxUniform_(key *Tensor, low float64, high float64)() { 
+  
+  err := ts._PhiloxUniform_(key, low, high)
+  if err != nil { log.Fatal(err) }
+  
+  return 
+} 
+
+func(ts *Tensor) Must_PhiloxUniformOut(out *Tensor, key *Tensor, low float64, high float64, del bool)(retVal *Tensor) { 
+  
+  retVal, err := ts._PhiloxUniformOut(out, key, low, high, del)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
 func(ts *Tensor) Must_PinMemory(device gotch.Device, del bool)(retVal *Tensor) { 
   
   retVal, err := ts._PinMemory(device, del)
@@ -2465,9 +2537,9 @@ func Must_ScaledDotProductAttentionMath(query *Tensor, key *Tensor, value *Tenso
   return retVal0, retVal1
 } 
 
-func Must_ScaledDotProductAttentionMathForMps(query *Tensor, key *Tensor, value *Tensor, attnMask *Tensor, dropoutP float64, isCausal bool, dropoutMask *Tensor, scale []float64)(retVal0 *Tensor, retVal1 *Tensor) { 
+func Must_ScaledDotProductAttentionMathForMps(query *Tensor, key *Tensor, value *Tensor, attnMask *Tensor, dropoutP float64, isCausal bool, dropoutMask *Tensor, scale []float64, enableGqa bool)(retVal0 *Tensor, retVal1 *Tensor) { 
   
-  retVal0, retVal1, err := _ScaledDotProductAttentionMathForMps(query, key, value, attnMask, dropoutP, isCausal, dropoutMask, scale)
+  retVal0, retVal1, err := _ScaledDotProductAttentionMathForMps(query, key, value, attnMask, dropoutP, isCausal, dropoutMask, scale, enableGqa)
   if err != nil { log.Fatal(err) }
   
   return retVal0, retVal1
@@ -3673,6 +3745,46 @@ func Must_UpsampleBilinear2dAaVec(input *Tensor, outputSize []int64, alignCorner
   return retVal
 } 
 
+func(ts *Tensor) Must_UpsampleLanczos2dAa(outputSize []int64, alignCorners bool, scalesH []float64, scalesW []float64, del bool)(retVal *Tensor) { 
+  
+  retVal, err := ts._UpsampleLanczos2dAa(outputSize, alignCorners, scalesH, scalesW, del)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func Must_UpsampleLanczos2dAaBackward(gradOutput *Tensor, outputSize []int64, inputSize []int64, alignCorners bool, scalesH []float64, scalesW []float64)(retVal *Tensor) { 
+  
+  retVal, err := _UpsampleLanczos2dAaBackward(gradOutput, outputSize, inputSize, alignCorners, scalesH, scalesW)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func Must_UpsampleLanczos2dAaBackwardGradInput(gradInput *Tensor, gradOutput *Tensor, outputSize []int64, inputSize []int64, alignCorners bool, scalesH []float64, scalesW []float64)(retVal *Tensor) { 
+  
+  retVal, err := _UpsampleLanczos2dAaBackwardGradInput(gradInput, gradOutput, outputSize, inputSize, alignCorners, scalesH, scalesW)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func(ts *Tensor) Must_UpsampleLanczos2dAaOut(out *Tensor, outputSize []int64, alignCorners bool, scalesH []float64, scalesW []float64, del bool)(retVal *Tensor) { 
+  
+  retVal, err := ts._UpsampleLanczos2dAaOut(out, outputSize, alignCorners, scalesH, scalesW, del)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func Must_UpsampleLanczos2dAaVec(input *Tensor, outputSize []int64, alignCorners bool, scaleFactors []float64)(retVal *Tensor) { 
+  
+  retVal, err := _UpsampleLanczos2dAaVec(input, outputSize, alignCorners, scaleFactors)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
 func(ts *Tensor) Must_UpsampleNearestExact1d(outputSize []int64, scales []float64, del bool)(retVal *Tensor) { 
   
   retVal, err := ts._UpsampleNearestExact1d(outputSize, scales, del)
@@ -3812,6 +3924,22 @@ func Must_UseCudnnCtcLossTensor(logProbs *Tensor, targets *Tensor, inputLengths 
 func Must_UseCudnnRnnFlattenWeight()(retVal bool) { 
   
   retVal, err := _UseCudnnRnnFlattenWeight()
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func Must_UseMiopenCtcLoss(logProbs *Tensor, targets *Tensor, inputLengths []int64, targetLengths []int64, blank int64)(retVal bool) { 
+  
+  retVal, err := _UseMiopenCtcLoss(logProbs, targets, inputLengths, targetLengths, blank)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func Must_UseMiopenCtcLossTensor(logProbs *Tensor, targets *Tensor, inputLengths *Tensor, targetLengths *Tensor, blank int64)(retVal bool) { 
+  
+  retVal, err := _UseMiopenCtcLossTensor(logProbs, targets, inputLengths, targetLengths, blank)
   if err != nil { log.Fatal(err) }
   
   return retVal
@@ -9425,6 +9553,14 @@ func(ts *Tensor) MustGerOut(out *Tensor, vec2 *Tensor, del bool)(retVal *Tensor)
   return retVal
 } 
 
+func(ts *Tensor) MustGetDevice(del bool)(retVal int64) { 
+  
+  retVal, err := ts.GetDevice(del)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
 func(ts *Tensor) MustGlu(dim int64, del bool)(retVal *Tensor) { 
   
   retVal, err := ts.Glu(dim, del)
@@ -13095,6 +13231,30 @@ func(ts *Tensor) MustMiopenConvolutionTransposeOut(out *Tensor, weight *Tensor, 
   if err != nil { log.Fatal(err) }
   
   return retVal
+} 
+
+func MustMiopenCtcLoss(logProbs *Tensor, targets *Tensor, inputLengths []int64, targetLengths []int64, blank int64, deterministic bool, zeroInfinity bool)(retVal0 *Tensor, retVal1 *Tensor) { 
+  
+  retVal0, retVal1, err := MiopenCtcLoss(logProbs, targets, inputLengths, targetLengths, blank, deterministic, zeroInfinity)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal0, retVal1
+} 
+
+func MustMiopenCtcLossOut(out0 *Tensor, out1 *Tensor, logProbs *Tensor, targets *Tensor, inputLengths []int64, targetLengths []int64, blank int64, deterministic bool, zeroInfinity bool)(retVal0 *Tensor, retVal1 *Tensor) { 
+  
+  retVal0, retVal1, err := MiopenCtcLossOut(out0, out1, logProbs, targets, inputLengths, targetLengths, blank, deterministic, zeroInfinity)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal0, retVal1
+} 
+
+func MustMiopenCtcLossTensor(logProbs *Tensor, targets *Tensor, inputLengths *Tensor, targetLengths *Tensor, blank int64, deterministic bool, zeroInfinity bool)(retVal0 *Tensor, retVal1 *Tensor) { 
+  
+  retVal0, retVal1, err := MiopenCtcLossTensor(logProbs, targets, inputLengths, targetLengths, blank, deterministic, zeroInfinity)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal0, retVal1
 } 
 
 func(ts *Tensor) MustMiopenDepthwiseConvolution(weight *Tensor, bias *Tensor, padding []int64, stride []int64, dilation []int64, groups int64, benchmark bool, deterministic bool, del bool)(retVal *Tensor) { 
@@ -18940,6 +19100,14 @@ func(ts *Tensor) MustStft(nFft int64, hopLength []int64, winLength []int64, wind
 func(ts *Tensor) MustStftCenter(nFft int64, hopLength []int64, winLength []int64, window *Tensor, center bool, padMode string, normalized bool, onesided bool, returnComplex bool, alignToWindow bool, del bool)(retVal *Tensor) { 
   
   retVal, err := ts.StftCenter(nFft, hopLength, winLength, window, center, padMode, normalized, onesided, returnComplex, alignToWindow, del)
+  if err != nil { log.Fatal(err) }
+  
+  return retVal
+} 
+
+func(ts *Tensor) MustStorageOffset(del bool)(retVal int64) { 
+  
+  retVal, err := ts.StorageOffset(del)
   if err != nil { log.Fatal(err) }
   
   return retVal

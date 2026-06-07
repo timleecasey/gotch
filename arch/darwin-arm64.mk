@@ -2,7 +2,7 @@
 # This file is included by the main Makefile based on detected OS and architecture
 
 # LibTorch installation path (can be overridden via LIBTORCH environment variable)
-LIBTORCH_PATH ?= $(shell [ -d "$(HOME)/src/gotch/libtorch-2.10.0-macos" ] && echo "$(HOME)/src/gotch/libtorch-2.10.0-macos" || echo "$(CURDIR)/libtorch-2.10.0-macos")
+LIBTORCH_PATH ?= $(shell [ -d "$(HOME)/src/gotch/libtorch-2.12.0-macos" ] && echo "$(HOME)/src/gotch/libtorch-2.12.0-macos" || echo "$(CURDIR)/libtorch-2.12.0-macos")
 
 # Runtime library path variable for macOS
 RUNTIME_LIB_VAR := DYLD_LIBRARY_PATH

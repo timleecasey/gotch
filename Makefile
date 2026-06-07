@@ -1,4 +1,4 @@
-# Makefile for gotch - PyTorch 2.10.0 Go bindings
+# Makefile for gotch - PyTorch 2.12.0 Go bindings
 # Architecture-specific configuration is loaded from arch/ directory
 
 SHELL := /bin/bash
@@ -46,7 +46,7 @@ test: test-nn test-ts ffi-validate
 	@echo "All tests completed"
 
 # Run nn package tests
-# Running with -p 1 to force sequential execution (PyTorch 2.10.0 thread-local gradient state)
+# Running with -p 1 to force sequential execution (PyTorch 2.12.0 thread-local gradient state)
 test-nn:
 	@echo "Running nn package tests..."
 	@go test $(TEST_FLAGS) -timeout $(TEST_TIMEOUT) -p 1 -parallel 1 ./nn
@@ -103,7 +103,7 @@ env:
 	@echo "Go version:"
 	@go version
 	@echo ""
-	@echo "LibTorch version: 2.10.0"
+	@echo "LibTorch version: 2.12.0"
 
 # Check if MPS is available
 check-mps:
@@ -117,7 +117,7 @@ ffi-validate:
 
 # Help target
 help:
-	@echo "Gotch Makefile - PyTorch 2.10.0 Go Bindings"
+	@echo "Gotch Makefile - PyTorch 2.12.0 Go Bindings"
 	@echo ""
 	@echo "Current Configuration:"
 	@echo "  Platform:      $(PLATFORM_DESC)"
